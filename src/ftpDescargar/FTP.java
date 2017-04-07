@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.SocketException;
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
 
 public class FTP {
 
@@ -18,6 +19,7 @@ private static String hostFile="/hola.txt";
 private static FTPClient ftp = new FTPClient();
 public static void main(String[] args) throws SocketException, IOException {
     conectar(ip,user,pass);
+    listaArchivos();
     desrcargarArchivoFTP(localFileDownload, hostFile);
     ftp.disconnect();
     
@@ -31,6 +33,19 @@ public static void conectar(String ip, String user, String pass) throws SocketEx
         System.out.println("login OK");
     else
         System.out.println("login Error");
+}
+
+public static void listaArchivos() throws IOException{
+
+  FTPFile[] ftpFiles = ftp.listFiles();
+    for (FTPFile ftpFile : ftpFiles) {
+      // Check if FTPFile is a regular file
+      if (ftpFile.getType() == FTPFile.FILE_TYPE) {
+//        System.out.println("FTPFile: " + ftpFile.getName() + "; "  + ftpFile.getSize()/1024 + " Kbs");
+        System.out.println("FTPFile: " + ftpFile.getName() + "; "  + ftpFile.getSize() + " b");
+//        System.out.println("FTPFile: " + ftpFile.getName() + "; " );
+      }
+    }            
 }
 
 public static void desrcargarArchivoFTP(String localFile, String hostFile) throws FileNotFoundException, IOException{
