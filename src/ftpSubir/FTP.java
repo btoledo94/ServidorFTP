@@ -16,12 +16,12 @@ public class FTP {
 public void SubirArchivo(Var1 c) throws SocketException, IOException {
     conectar(c.getServidorFTP(),c.getUsuario(),c.getPass());
     desrcargarArchivoFTP(c.getUrl(),c.getNombreArchivo());
+    ftp.logout();
     ftp.disconnect();
-  
+    
 }    
 
 public void conectar(String ip, String user, String pass) throws SocketException, IOException{
-    ftp = new FTPClient();
     ftp.connect(ip);
 
     if(ftp.login(user, pass))
@@ -35,7 +35,7 @@ public void desrcargarArchivoFTP(String localFile, String hostFile) throws FileN
     fis = new FileInputStream(localFile);
     BufferedInputStream buffOut = new BufferedInputStream(fis);
     if(ftp.storeFile(hostFile, buffOut))
-        System.out.println("Carga correcta");
+        System.out.println("Transferencia de Archivo Completo");
     else
         System.out.println("Error al Cargar");
     buffOut.close();
