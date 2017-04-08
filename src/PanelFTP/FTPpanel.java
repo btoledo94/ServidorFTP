@@ -62,6 +62,11 @@ public class FTPpanel extends javax.swing.JFrame {
         });
 
         jButton2.setText("DESCARGAR ARCHIVO");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SERVIDOR FTP");
@@ -146,6 +151,18 @@ public class FTPpanel extends javax.swing.JFrame {
         
             
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dato.setServidorFTP(jTextField1.getText().toString());
+        dato.setUsuario(jTextField2.getText().toString());
+        dato.setPass(jPasswordField1.getText().toString());
+           
+        DescargarFTP obj = new DescargarFTP();
+        obj.jLabel1.setText(dato.getServidorFTP());
+        obj.jLabel2.setText(dato.getUsuario());
+        obj.jLabel3.setText(dato.getPass());
+        obj.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
