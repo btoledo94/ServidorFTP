@@ -153,7 +153,7 @@ public class SubirFTP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println(jTextField1.getText().toString());
+        System.out.println(jTextField1.getText());
         JFileChooser file=new JFileChooser();
         file.showOpenDialog(this);
         jLabel1.setText(file.getSelectedFile().toString());
@@ -162,12 +162,11 @@ public class SubirFTP extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     
-        dato.setUrl(jLabel1.getText().toString());
-        dato.setNombreArchivo("/"+jTextField1.getText().toString());
-        dato.setServidorFTP(jLabel2.getText().toString());
-        dato.setUsuario(jLabel4.getText().toString());
-        dato.setPass(jLabel5.getText().toString());
+        dato.setUrl(jLabel1.getText());
+        dato.setNombreArchivo("//"+jTextField1.getText());
+        dato.setServidorFTP(jLabel2.getText());
+        dato.setUsuario(jLabel4.getText());
+        dato.setPass(jLabel5.getText());
         try {
             subir.SubirArchivo(dato);
             jLabel6.setText("Transferencia de Archivo Completo");

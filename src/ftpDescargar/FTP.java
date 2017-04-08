@@ -1,5 +1,6 @@
 package ftpDescargar;
 
+import Variables.Var1;
 import java.io.BufferedOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,17 +11,17 @@ import org.apache.commons.net.ftp.FTPFile;
 
 public class FTP {
 
-private static String ip = "ftp.webcindario.com";
-private static String user = "prueba21345";
-private static String pass = "Medina23101969.";
-private static String localFileDownload = "C:\\wamp64\\hola.txt";
-private static String hostFile="/hola.txt";
+//private static String ip = "ftp.webcindario.com";
+//private static String user = "prueba21345";
+//private static String pass = "Medina23101969.";
+//private static String localFileDownload = "C:\\wamp64\\hola.txt";
+//private static String hostFile="/hola.txt";
 
 private static FTPClient ftp = new FTPClient();
-public static void main(String[] args) throws SocketException, IOException {
-    conectar(ip,user,pass);
+public void descarga(Var1 dato) throws SocketException, IOException {
+    conectar(dato.getServidorFTP(),dato.getUsuario(),dato.getPass());
     listaArchivos();
-    desrcargarArchivoFTP(localFileDownload, hostFile);
+    desrcargarArchivoFTP(dato.getUrl(), dato.getNombreArchivo());
     ftp.disconnect();
     
 }    
