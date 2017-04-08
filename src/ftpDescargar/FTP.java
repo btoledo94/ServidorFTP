@@ -17,18 +17,16 @@ public class FTP {
 //private static String localFileDownload = "C:\\wamp64\\hola.txt";
 //private static String hostFile="/hola.txt";
 
-private static FTPClient ftp = new FTPClient();
+private FTPClient ftp = new FTPClient();
 public void descarga(Var1 dato) throws SocketException, IOException {
     conectar(dato.getServidorFTP(),dato.getUsuario(),dato.getPass());
-    listaArchivos();
     desrcargarArchivoFTP(dato.getUrl(), dato.getNombreArchivo());
     ftp.disconnect();
     
 }    
 
-public static void conectar(String ip, String user, String pass) throws SocketException, IOException{
-    ftp = new FTPClient();
-    ftp.connect(ip);
+public void conectar(String ip, String user, String pass) throws SocketException, IOException{
+     ftp.connect(ip);
 
     if(ftp.login(user, pass))
         System.out.println("login OK");
@@ -36,20 +34,8 @@ public static void conectar(String ip, String user, String pass) throws SocketEx
         System.out.println("login Error");
 }
 
-public static void listaArchivos() throws IOException{
 
-  FTPFile[] ftpFiles = ftp.listFiles();
-    for (FTPFile ftpFile : ftpFiles) {
-      // Check if FTPFile is a regular file
-      if (ftpFile.getType() == FTPFile.FILE_TYPE) {
-//        System.out.println("FTPFile: " + ftpFile.getName() + "; "  + ftpFile.getSize()/1024 + " Kbs");
-        System.out.println("FTPFile: " + ftpFile.getName() + "; "  + ftpFile.getSize() + " b");
-//        System.out.println("FTPFile: " + ftpFile.getName() + "; " );
-      }
-    }            
-}
-
-public static void desrcargarArchivoFTP(String localFile, String hostFile) throws FileNotFoundException, IOException{
+public void desrcargarArchivoFTP(String localFile, String hostFile) throws FileNotFoundException, IOException{
     //fos = new FileOutputStream(localFile);
     BufferedOutputStream buffOut = new BufferedOutputStream(new FileOutputStream(localFile));
     if(ftp.retrieveFile(hostFile, buffOut))

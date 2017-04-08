@@ -31,10 +31,10 @@ public void conectar(String ip, String user, String pass) throws SocketException
 }
 
 public void desrcargarArchivoFTP(String localFile, String hostFile) throws FileNotFoundException, IOException{
- FileInputStream fis = null;
+   FileInputStream fis = null;
     fis = new FileInputStream(localFile);
     BufferedInputStream buffOut = new BufferedInputStream(fis);
-    if(ftp.storeFile(hostFile, buffOut))
+    if(ftp.storeFile(hostFile, fis))
         System.out.println("Transferencia de Archivo Completo");
     else
         System.out.println("Error al Cargar");

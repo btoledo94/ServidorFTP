@@ -165,23 +165,23 @@ public class FTPpanel extends javax.swing.JFrame {
         dato.setPass(jPasswordField1.getText().toString());
            
         SubirFTP obj = new SubirFTP();
-        obj.jLabel2.setText(dato.getServidorFTP());
-        obj.jLabel4.setText(dato.getUsuario());
-        obj.jLabel5.setText(dato.getPass());
+        obj.jLabel2.setText(jTextField1.getText());
+        obj.jLabel4.setText(jTextField2.getText());
+        obj.jLabel5.setText(jPasswordField1.getText());
         obj.setVisible(true);
         dispose();       
             
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        dato.setServidorFTP(jTextField1.getText().toString());
+        dato.setServidorFTP(jTextField1.getText());
         dato.setUsuario(jTextField2.getText().toString());
         dato.setPass(jPasswordField1.getText().toString());
            
         DescargarFTP obj = new DescargarFTP();
-        obj.jLabel1.setText(dato.getServidorFTP());
-        obj.jLabel2.setText(dato.getUsuario());
-        obj.jLabel3.setText(dato.getPass());
+        obj.jLabel1.setText(jTextField1.getText());
+        obj.jLabel2.setText(jTextField2.getText());
+        obj.jLabel3.setText(jPasswordField1.getText());
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
